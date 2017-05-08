@@ -1,8 +1,9 @@
 #include <gtest/gtest.h>
-
+#include "TestForMakefile.hpp"
 class TestGame : public ::testing::Test{
 public:
-  void SetUp(){
+  void SetUp()
+  {
   }
   void TearDown()
   {
@@ -12,6 +13,13 @@ public:
 TEST(TestGame, testForbuild)
 {
 
+}
+TEST(TestGame, GivenANewClass_WhenCallOnlyFuntion_ThenRuturn0)
+{
+  TestForMakefile* pTestForMakefile = new TestForMakefile();
+  int returnValue = pTestForMakefile->testBuildSuccess();
+  EXPECT_EQ(1,returnValue);
+  delete pTestForMakefile;
 }
 
 int main(int argc, char **argv) {

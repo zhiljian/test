@@ -5,7 +5,10 @@ SRC_DIRS:=.
 C_SRCS:=$(foreach d, $(SRC_DIRS), $(wildcard $d/*.c))
 CXX_SRCS:=$(foreach d,$(SRC_DIRS), $(wildcard $d/*.cpp))
 GTEST_DIR:=../googletest/googletest
-FLAGS:=-I$(GTEST_DIR)/include -I . -I ./testForBuild/inc
+FLAGS:=-I$(GTEST_DIR)/include -I .
+FLAGS+= -I ./testForBuild/inc 
+FLAGS+= -I ./LuckNumber/inc
+FLAGS+= -I ./GlobalFile
 LDFLAGS:=-L$(GTEST_DIR)/build -L. -lgtest -lstdc++ -lpthread
 
 exclude_dirs := debug GlobalFile

@@ -8,7 +8,7 @@ GTEST_DIR:=../googletest/googletest
 FLAGS:=-I$(GTEST_DIR)/include -I . -I ./testForBuild/inc
 LDFLAGS:=-L$(GTEST_DIR)/build -L. -lgtest -lstdc++ -lpthread
 
-exclude_dirs := debug
+exclude_dirs := debug GlobalFile
 dirs := $(shell find . -maxdepth 1 -type d)
 dirs := $(basename $(patsubst ./%,%,$(dirs)))
 dirs := $(filter-out $(exclude_dirs),$(dirs))

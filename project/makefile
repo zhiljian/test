@@ -3,7 +3,7 @@ TARGET:=ut_run
 GXX:=g++
 SRC_DIRS:=.
 C_SRCS:=$(foreach d, $(SRC_DIRS), $(wildcard $d/*.c))
-CXX_SRCS:=$(foreach d,$(SRC_DIRS), $(wildcard $d/*.cpp))
+CXX_SRCS:=$(foreach d,$(SRC_DIRS), $(wildcard *.cpp))
 GTEST_DIR:=../googletest/googletest
 FLAGS:=-I$(GTEST_DIR)/include -I .
 FLAGS+= -I ./testForBuild/inc 
@@ -34,10 +34,12 @@ subdirs: $(SUBDIRS)
 ALL_OBJS:= $(foreach x,${OBJ_DIR},$(wildcard $(addprefix ${x}/*,.o)))
 
 $(CXX_OBJS)  :%.o: %.cpp
-	$(GXX) -c -o $(OBJ_DIR)/$(CXX_OBJS) $(CXX_SRCS) $(FLAGS)
+	echo $(CXX_SRCS)
+	$(GXX) -c -o $(OBJ_DIR)/$@ $^ $(FLAGS)
 
 
 DEBUG:
+	echo $(CXX_SRCS)
 	$(MAKE) -C $(DEBUG)
 clean:
 	-rm ./debug/*.o ./debug/$(TARGET)
